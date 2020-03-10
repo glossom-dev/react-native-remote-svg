@@ -7,6 +7,7 @@ const MyImage = props => {
   const source = resolveAssetSource(props.source);
   if (source && (source.uri && source.uri.match('.svg'))) {
     const style = props.style || {};
+    const svgStyle = props.svgStyle || {};
     if (source.__packager_asset && typeof style !== 'number') {
       if (!style.width) {
         style.width = source.width;
@@ -15,7 +16,7 @@ const MyImage = props => {
         style.height = source.height;
       }
     }
-    return <SvgImage {...props} source={source} style={style} />;
+    return <SvgImage {...props} source={source} style={style} svgStyle={svgStyle} />;
   } else {
     return <Image {...props} />;
   }

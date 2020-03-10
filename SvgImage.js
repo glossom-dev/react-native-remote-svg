@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { WebView } from 'react-native-webview';
 
-const getHTML = (svgContent, style) => `
+const getHTML = (svgContent, style, svgStyle) => `
 <html data-key="key-${style.height}-${style.width}">
   <head>
     <style>
@@ -20,8 +20,8 @@ const getHTML = (svgContent, style) => `
         position: fixed;
         top: 0;
         left: 0;
-        height: 100%;
-        width: 100%;
+        height: ${svgStyle.height ? svgStyle.height : '100%'};
+        width: ${svgStyle.width ? svgStyle.width : '100%'};
         overflow: hidden;
       }
     </style>
@@ -67,7 +67,7 @@ class SvgImage extends Component {
     const { svgContent } = this.state;
     if (svgContent) {
       const flattenedStyle = StyleSheet.flatten(props.style) || {};
-      const html = getHTML(svgContent, flattenedStyle);
+      const html = getHTML(svgContent, flattenedStyle, props.svgStyle);
 
       return (
         <View pointerEvents="none" style={[props.style, props.containerStyle]}>
