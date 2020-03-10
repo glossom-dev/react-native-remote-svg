@@ -78,6 +78,16 @@ You can load normal jpg/png images as well
 />
 ```
 
+apply styles to the internal webview's svg tag by passing svgStyle
+
+```js
+<Image
+  source={{ uri: 'https://example.com/my-other-pic.png' }
+  style={{ width: 100, height: 120}}
+  svgStyle={{ width: 100, height: 120}}
+/>
+```
+
 ## Feature parity:
 
 Here are the list of react-native Image features that are supported:
